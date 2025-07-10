@@ -1,0 +1,10 @@
+
+=== WindowsShortcutCreator Log - 07/10/2025 14:28:39 ===
+Script directory: C:\Users\camer\OneDrive\Documents\Github\WindowsShortcutCreator\bin
+------------------------------------------------------
+
+paths.txt created via GUI picker
+FAILED: C:\Users\camer\OneDrive\Desktop\Enchanted?MCM\wg_c0_a8_c8_06.conf
+
+Total shortcuts created: 0
+=== Script completed successfully ===

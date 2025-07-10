@@ -1,0 +1,5 @@
+
+=== WindowsShortcutCreator Log - 07/10/2025 14:26:53 ===
+Script directory: C:\Users\camer\OneDrive\Documents\Github\WindowsShortcutCreator\bin
+------------------------------------------------------
+

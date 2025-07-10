@@ -1,0 +1,10 @@
+
+=== WindowsShortcutCreator Log - 07/10/2025 14:33:30 ===
+Script directory: C:\Users\camer\OneDrive\Documents\Github\WindowsShortcutCreator\bin
+------------------------------------------------------
+
+paths.txt created via GUI picker
+CREATED: C:\Users\Public\Desktop\AbortWSUSForcedShutdownUtility.lnk -> C:\Users\camer\OneDrive\Desktop\Github\AbortWSUSForcedShutdownUtility.zip
+
+Total shortcuts created: 1
+=== Script completed successfully ===

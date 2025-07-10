@@ -1,0 +1,12 @@
+
+=== WindowsShortcutCreator Log - 07/10/2025 14:23:22 ===
+Script directory: C:\Users\camer\OneDrive\Documents\Github\WindowsShortcutCreator\bin
+------------------------------------------------------
+
+paths.txt created via GUI picker
+CREATED: C:\Users\camer\Downloads\TI Connect CE.lnk -> C:\Program Files\TI Education\TI Connect CE\TI Connect CE.exe
+CREATED: C:\Users\camer\Downloads\Code.lnk -> C:\Users\camer\AppData\Local\Programs\Microsoft VS Code\Code.exe
+CREATED: C:\Users\camer\Downloads\YTDownloader.lnk -> C:\Users\camer\AppData\Local\Programs\YTDownloader\YTDownloader.exe
+
+Total shortcuts created: 3
+=== Script completed successfully ===

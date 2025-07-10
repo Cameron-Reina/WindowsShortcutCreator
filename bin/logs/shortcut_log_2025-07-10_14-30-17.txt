@@ -1,0 +1,6 @@
+
+=== WindowsShortcutCreator Log - 07/10/2025 14:30:17 ===
+Script directory: C:\Users\camer\OneDrive\Documents\Github\WindowsShortcutCreator\bin
+------------------------------------------------------
+
+paths.txt created via GUI picker

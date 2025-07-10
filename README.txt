@@ -18,10 +18,7 @@
 
 Steps:
 
-1. Double click "paths"
-2. Double click "paths.txt"
-3. Enter full path names of programs, (e.g. "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe")
-4. Double click "WindowsShortcutCreator.bat"
-5. Hit enter to exit at the end
+1. Double click "WindowsShortcutCreator Starter"
+2. Follow the on screen instructions.
 
 done!

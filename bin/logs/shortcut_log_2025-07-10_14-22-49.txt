@@ -1,0 +1,10 @@
+
+=== WindowsShortcutCreator Log - 07/10/2025 14:22:49 ===
+Script directory: C:\Users\camer\OneDrive\Documents\Github\WindowsShortcutCreator\bin
+------------------------------------------------------
+
+paths.txt created via GUI picker
+CREATED: C:\Users\camer\Downloads\Audacity.lnk -> C:\Program Files\Audacity\Audacity.exe
+
+Total shortcuts created: 1
+=== Script completed successfully ===

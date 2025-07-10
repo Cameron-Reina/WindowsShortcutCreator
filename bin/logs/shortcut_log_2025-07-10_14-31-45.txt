@@ -1,0 +1,11 @@
+
+=== WindowsShortcutCreator Log - 07/10/2025 14:31:45 ===
+Script directory: C:\Users\camer\OneDrive\Documents\Github\WindowsShortcutCreator\bin
+------------------------------------------------------
+
+paths.txt created via GUI picker
+Destination chosen: C:\Users\Public\Desktop (set as previous location)
+CREATED: C:\Users\Public\Desktop\Great Grandpa.lnk -> C:\Users\camer\OneDrive\Desktop\Great Grandpa.jpg
+
+Total shortcuts created: 1
+=== Script completed successfully ===

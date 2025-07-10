@@ -1,0 +1,11 @@
+
+=== WindowsShortcutCreator Log - 07/10/2025 14:21:47 ===
+Script directory: C:\Users\camer\OneDrive\Documents\Github\WindowsShortcutCreator\bin
+------------------------------------------------------
+
+paths.txt created via GUI picker
+Destination chosen: C:\Users\camer\Downloads
+CREATED: C:\Users\camer\Downloads\Update.lnk -> C:\Users\camer\AppData\Local\Discord\Update.exe
+
+Total shortcuts created: 1
+=== Script completed successfully ===
