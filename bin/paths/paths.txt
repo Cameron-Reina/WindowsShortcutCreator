@@ -1,0 +1,20 @@
+# WindowsShortcutCreator - Manual Paths Configuration
+# 
+# This file allows you to manually configure paths for shortcut creation.
+# Add one file or folder path per line.
+# 
+# Usage:
+# - Lines starting with # are comments and will be ignored
+# - Empty lines are ignored
+# - Put full paths to files or folders you want shortcuts for
+# 
+# Examples:
+# C:\Program Files\Notepad++\notepad++.exe
+# C:\Users\%USERNAME%\Desktop\MyDocument.pdf
+# "C:\Program Files (x86)\Steam\steam.exe"
+# 
+# Note: Paths with spaces should be enclosed in quotes
+# Note: You can use environment variables like %USERNAME%, %PROGRAMFILES%, etc.
+#
+# This file will be preserved after script completion.
+# GUI selections are stored in WSCPaths.txt which gets cleaned up automatically.
