@@ -1,7 +1,7 @@
 @echo off
 title WindowsShortcutCreator Launcher
 echo ======================================================
-echo        WindowsShortcutCreator - Version 2.0
+echo        WindowsShortcutCreator - Version 3.0
 echo              Made by: Cameron Reina
 echo ======================================================
 echo.

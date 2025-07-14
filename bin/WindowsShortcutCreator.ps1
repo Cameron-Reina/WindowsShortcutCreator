@@ -1,9 +1,9 @@
 # WindowsShortcutCreator.ps1
-# Version 2.0 - Full PowerShell Rewrite
+# Version 3.0 - Full PowerShell Rewrite
 # Made by: Cameron Reina
 
 # --- Set Window Title and Banner ---
-$Host.UI.RawUI.WindowTitle = "WindowsShortcutCreator - Version 2.0"
+$Host.UI.RawUI.WindowTitle = "WindowsShortcutCreator - Version 3.0"
 
 # Global variable to track WSCPaths file for cleanup
 $global:WSCPathsFile = ""
@@ -67,7 +67,7 @@ function Start-ShortcutCreator {
 
         Write-Host ""
         Write-Host "======================================================"
-        Write-Host "       WindowsShortcutCreator - Version 2.0"
+        Write-Host "       WindowsShortcutCreator - Version 3.0"
         Write-Host "              Made by: Cameron Reina"
         Write-Host "======================================================"
         Write-Host ""
@@ -179,7 +179,7 @@ function Start-ShortcutCreator {
 
     # --- Logger helper ---
     Add-Content $logFile "=== WindowsShortcutCreator Log - $(Get-Date) ==="
-    Add-Content $logFile "Script version: 2.0"
+    Add-Content $logFile "Script version: 3.0"
     Add-Content $logFile "PowerShell version: $($PSVersionTable.PSVersion)"
     Add-Content $logFile "User: $($env:USERNAME)"
     Add-Content $logFile "Computer: $($env:COMPUTERNAME)"
@@ -799,15 +799,6 @@ function Start-ShortcutCreator {
                 continue
             }
 
-            # Create the shortcut after duplicate handling
-            $shortcut = $wshell.CreateShortcut($link)
-            $shortcut.TargetPath = $target
-            
-            # Set working directory to the target's directory if it's a file
-            if ((Get-Item $target) -is [System.IO.FileInfo]) {
-                $shortcut.WorkingDirectory = [System.IO.Path]::GetDirectoryName($target)
-            }
-            
             # Test write permissions before attempting to save
             $testFile = "$dest\test_permissions_$(Get-Random).tmp"
             try {
@@ -847,7 +838,7 @@ function Start-ShortcutCreator {
             }
             
             if ($duplicateType -ne "") {
-                Write-Host ""
+                Write-Host ""  # Complete the initial "Creating shortcut..." line
                 if ($duplicateType -eq "exact") {
                     Write-Host "    [!] Shortcut already exists: $duplicateName" -ForegroundColor Yellow
                 } else {
@@ -934,7 +925,18 @@ function Start-ShortcutCreator {
                     continue
                 }
                 
-                Write-Host "  Creating shortcut: $([System.IO.Path]::GetFileNameWithoutExtension($link))..." -NoNewline
+                # Show the correct shortcut name after duplicate handling
+                $shortcutDisplayName = [System.IO.Path]::GetFileNameWithoutExtension($link)
+                Write-Host "  Creating shortcut: $shortcutDisplayName..." -NoNewline
+            }
+            
+            # Create the shortcut with the correct path (after duplicate handling)
+            $shortcut = $wshell.CreateShortcut($link)
+            $shortcut.TargetPath = $target
+            
+            # Set working directory to the target's directory if it's a file
+            if ((Get-Item $target) -is [System.IO.FileInfo]) {
+                $shortcut.WorkingDirectory = [System.IO.Path]::GetDirectoryName($target)
             }
             
             # Only create shortcut if not skipped
