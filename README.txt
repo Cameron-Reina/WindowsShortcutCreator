@@ -1,15 +1,4 @@
-# WindowsShortcutCreator
-
-```
-__          ___           _                    _____ _                _             _    _____                _             
- \ \        / (_)         | |                  / ____| |              | |           | |  / ____|              | |            
-  \ \  /\  / / _ _ __   __| | _____      _____| (___ | |__   ___  _ __| |_ ___ _   _| |_| |     _ __ ___  __ _| |_ ___  _ __ 
-   \ \/  \/ / | | '_ \ / _` |/ _ \ \ /\ / / __|\___ \| '_ \ / _ \| '__| __/ __| | | | __| |    | '__/ _ \/ _` | __/ _ \| '__|
-    \  /\  /  | | | | | (_| | (_) \ V  V /\__ \____) | | | | (_) | |  | || (__| |_| | |_| |____| | |  __/ (_| | || (_) | |   
-     \/  \/   |_|_| |_|\__,_|\___/ \_/\_/ |___/_____/|_| |_|\___/|_|   \__\___|\__,_|\__|\_____|_|  \___|\__,_|\__\___/|_|   
-                                                                                                                             
-                                                                                                                             
-```
+# Windows Shortcut Creator
 
 **Created by: Cameron Reina**  
 **STU TECH**
@@ -56,15 +45,15 @@ That's it. No setup required.
 
 ```
 WindowsShortcutCreator/
-├── WindowsShortcutCreator Starter.bat    # Run this file
-├── bin/
-│   ├── WindowsShortcutCreator.ps1        # Main script
-│   ├── paths/
-│   │   ├── paths.txt                     # Put file paths here (optional)
-│   │   └── shortcut_destination.txt      # Remembers your choice
-│   └── logs/
-│       └── shortcut_log_[timestamp].txt  # Operation logs
-└── README.txt                            # This file
+|-- WindowsShortcutCreator Starter.bat    # Run this file
+|-- bin/
+|   |-- WindowsShortcutCreator.ps1        # Main script
+|   |-- paths/
+|   |   |-- paths.txt                     # Put file paths here (optional)
+|   |   +-- shortcut_destination.txt      # Remembers your choice
+|   +-- logs/
+|       +-- shortcut_log_[timestamp].txt  # Operation logs
++-- README.txt                            # This file
 ```
 
 ## Using a file list (paths.txt)
