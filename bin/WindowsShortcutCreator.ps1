@@ -75,15 +75,26 @@ function Start-ShortcutCreator {
         # --- UAC Elevation Check ---
         $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
         $isAdmin = $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+        $currentUser = [Security.Principal.WindowsIdentity]::GetCurrent().Name
 
         if ($isAdmin) {
             Write-Host "[+] Running with administrator privileges..." -ForegroundColor Green
+            Write-Host "    Current user: $currentUser" -ForegroundColor Green
             Write-Host "    Public desktop access: Available" -ForegroundColor Green
             Write-Host ""
         } else {
             Write-Host "[!] Running with standard user privileges..." -ForegroundColor Yellow
+            Write-Host "    Current user: $currentUser" -ForegroundColor Yellow
             Write-Host "    Public desktop access: Limited" -ForegroundColor Yellow
             Write-Host ""
+            
+            # Show additional info if running as administrator account but not elevated
+            if ($currentUser -match "Administrator|admin") {
+                Write-Host "    Note: You're using an administrator account, but the process is not elevated." -ForegroundColor Cyan
+                Write-Host "    Even administrator accounts need to 'Run as administrator' for full privileges." -ForegroundColor Cyan
+                Write-Host ""
+            }
+            
             Write-Host "Would you like to restart with administrator privileges?" -ForegroundColor Cyan
             Write-Host ""
             Write-Host "  [Y] Yes - Enable public desktop access (recommended)" -ForegroundColor Green
@@ -115,7 +126,6 @@ function Start-ShortcutCreator {
                         Start-Process cmd -ArgumentList "/c `"$batchFile`"" -Verb RunAs
                         Write-Host ""
                         Write-Host "[*] New elevated window should open. This window will close..." -ForegroundColor Green
-                        Start-Sleep -Seconds 2
                         # Force exit this PowerShell session
                         [Environment]::Exit(0)
                     } else {
@@ -124,7 +134,6 @@ function Start-ShortcutCreator {
                         Start-Process PowerShell -ArgumentList "-ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
                         Write-Host ""
                         Write-Host "[*] New elevated window should open. This window will close..." -ForegroundColor Green
-                        Start-Sleep -Seconds 2
                         # Force exit this PowerShell session
                         [Environment]::Exit(0)
                     }
@@ -243,7 +252,6 @@ function Start-ShortcutCreator {
             Write-Host "    Script aborted." -ForegroundColor Red
             Add-Content $logFile "ERROR: Input file not found: $inputFile"
             Write-Host ""
-            Read-Host "Press ENTER to exit"
             return
         }
         
@@ -282,7 +290,6 @@ function Start-ShortcutCreator {
             Write-Host "[!] No files selected. Script aborted." -ForegroundColor Red
             Add-Content $logFile "ERROR: No files selected in GUI picker"
             Write-Host ""
-            Read-Host "Press ENTER to exit"
             return
         }
     }
@@ -361,7 +368,6 @@ function Start-ShortcutCreator {
         Write-Host "[!] ERROR: No valid targets found!" -ForegroundColor Red
         Add-Content $logFile "ERROR: No valid targets found"
         Write-Host ""
-        Read-Host "Press ENTER to exit"
         return
     }
 
@@ -471,7 +477,6 @@ function Start-ShortcutCreator {
         # Validate choice is a number
         if (-not [int]::TryParse($choice, [ref]$null)) {
             Write-Host "[!] Invalid choice '$choice'. Please enter a number..." -ForegroundColor Red
-            Start-Sleep -Seconds 2
             Clear-Host
             Write-Host "======================================================" -ForegroundColor Cyan
             Write-Host "[2] STEP 2: Choose Shortcut Destination" -ForegroundColor Cyan
@@ -486,7 +491,6 @@ function Start-ShortcutCreator {
         if ($choiceNum -lt 1 -or $choiceNum -gt $maxChoice) {
             Write-Host "[!] Invalid choice '$choice'. Please enter a number between 1 and $maxChoice..." -ForegroundColor Red
             Add-Content $logFile "Invalid choice: $choice (out of range 1-$maxChoice)"
-            Start-Sleep -Seconds 3
             Clear-Host
             Write-Host "======================================================" -ForegroundColor Cyan
             Write-Host "[2] STEP 2: Choose Shortcut Destination" -ForegroundColor Cyan
@@ -580,7 +584,6 @@ function Start-ShortcutCreator {
                                 Write-Host "[!] No folder selected. Please choose again..." -ForegroundColor Yellow
                                 Add-Content $logFile "No folder selected in GUI picker, returning to menu"
                                 Write-Host ""
-                                Start-Sleep -Seconds 2
                                 Clear-Host
                                 Write-Host "======================================================" -ForegroundColor Cyan
                                 Write-Host "[2] STEP 2: Choose Shortcut Destination" -ForegroundColor Cyan
@@ -597,7 +600,6 @@ function Start-ShortcutCreator {
                             Add-Content $logFile "Saved preference cleared, returning to destination menu"
                             Write-Host "[+] Preference cleared. You can now choose from all available options..." -ForegroundColor Green
                             Write-Host ""
-                            Start-Sleep -Seconds 2
                             Clear-Host
                             Write-Host "======================================================" -ForegroundColor Cyan
                             Write-Host "[2] STEP 2: Choose Shortcut Destination" -ForegroundColor Cyan
@@ -608,7 +610,6 @@ function Start-ShortcutCreator {
                 } else {
                     Write-Host "[!] Invalid choice. Please try again..." -ForegroundColor Red
                     Add-Content $logFile "Invalid choice: $choice (not found in option map)"
-                    Start-Sleep -Seconds 2
                     Clear-Host
                     Write-Host "======================================================" -ForegroundColor Cyan
                     Write-Host "[2] STEP 2: Choose Shortcut Destination" -ForegroundColor Cyan
@@ -663,7 +664,6 @@ function Start-ShortcutCreator {
                         Write-Host "[!] No folder selected. Please choose again..." -ForegroundColor Yellow
                         Add-Content $logFile "No folder selected in GUI picker, returning to menu"
                         Write-Host ""
-                        Start-Sleep -Seconds 2
                         Clear-Host
                         Write-Host "======================================================" -ForegroundColor Cyan
                         Write-Host "[2] STEP 2: Choose Shortcut Destination" -ForegroundColor Cyan
@@ -673,7 +673,6 @@ function Start-ShortcutCreator {
                 }
                 default {
                     Write-Host "[!] Invalid choice. Please try again..." -ForegroundColor Red
-                    Start-Sleep -Seconds 2
                     Clear-Host
                     Write-Host "======================================================" -ForegroundColor Cyan
                     Write-Host "[2] STEP 2: Choose Shortcut Destination" -ForegroundColor Cyan
@@ -726,7 +725,6 @@ function Start-ShortcutCreator {
         Add-Content $logFile "Destination directory already exists: $dest"
     }
     Write-Host ""
-    Start-Sleep -Seconds 1  # Brief pause before moving to next step
 
     # --- Shortcut creation ---
     Clear-Host
@@ -1318,8 +1316,10 @@ do {
             }
         }
         
-        Write-Host "Press ENTER to exit..." -ForegroundColor Gray
-        [void][System.Console]::ReadLine()
-        break
+        Write-Host "[*] Exiting program..." -ForegroundColor Gray
+        Start-Sleep -Seconds 1
+        
+        # Signal successful completion to batch file and close window
+        [Environment]::Exit(0)
     }
 } while ($true)
