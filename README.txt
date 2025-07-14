@@ -1,6 +1,6 @@
 # Windows Shortcut Creator
 
-**Created by: Cameron Reina**  
+**Created by: Cameron Reina**
 **STU TECH**
 
 **Version 3.0** - Create desktop shortcuts quickly and easily
